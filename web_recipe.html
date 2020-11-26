@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>Search</title>
+</head>
+
+<body>
+	<nav style="display: flex; justify-content: space-between">
+		<div><a href="index.html">Home</a></div>
+		<div><a href="web_recipe.html">Search For Recipes</a></div>
+		<div><a href="create_recipe.html">Create Your Own Recipe</a></div>
+		<div><a href="favorites.html">My Favorites</a></div>
+		<div><a href="shopping_list.html">My Shopping List</a></div>
+	</nav>
+
+	<h1>Search</h1>
+	<form method="POST" action="">
+		<select name="cuisine_type" size="1">
+			<option value="italian">Italian</option>
+			<option value="carribbean">Carribbean</option>
+			<option value="korean">Korean</option>
+			<option value="german">German</option>
+			<option value="indian">Indian</option>
+		</select>
+		<input type="button" value="Search" />
+	</form>
+	<p style="color:red">look at API to decide which categories users can select from</p>
+	<p style="color:red">do API stuff display results below</p>
+	<div id="data">Loading...</div>
+	<p style="color:red">maybe try to put names of dishes into a dropdown list so users can decide which ones they want to add to favorites; or maybe we can have an "add to favorites" button next to each recipe, give each recipe an id and pass to database</p>
+
+	<form method="POST" action="">
+		<input type="button" value="Add to Favorites">
+	</form>
+
+
+</body>
+</html>

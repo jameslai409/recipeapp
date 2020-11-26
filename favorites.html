@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>My Favorites</title>
+</head>
+
+<body>
+	<nav style="display: flex; justify-content: space-between">
+		<div><a href="index.html">Home</a></div>
+		<div><a href="web_recipe.html">Search For Recipes</a></div>
+		<div><a href="create_recipe.html">Create Your Own Recipe</a></div>
+		<div><a href="favorites.html">My Favorites</a></div>
+		<div><a href="shopping_list.html">My Shopping List</a></div>
+	</nav>
+
+	<h1>My Favorites</h1>
+
+	<form method="POST" action="">
+		<select name="num_entries" size="1">
+			<option value="10">Show first 10 entries</option>
+			<option value="50">Show first 50 entries</option>
+			<option value="100">Show first 100 entries</option>
+			<option value="all">Show all entries</option>
+		</select>
+	</form>
+	<p style="color: red">Grab data from database and dipslay</p>
+	<p style="color: red">Next to each recipe, have an "add to shopping list" button; have a field in database called "Shopping List?", check yes if user clicks on the corresponding "add to shopping list" button -> we can then just display ingredients of recipes with a checked "shopping list?" field on my shopping list page</p>
+	<form method="POST" action="">
+		<input type="button" value="Add to Shopping List" />
+	</form>
+</body>
+</html>

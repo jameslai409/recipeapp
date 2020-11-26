@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>Create Your Own Recipe</title>
+</head>
+
+<body>
+	<nav style="display: flex; justify-content: space-between">
+		<div><a href="index.html">Home</a></div>
+		<div><a href="web_recipe.html">Search For Recipes</a></div>
+		<div><a href="create_recipe.html">Create Your Own Recipe</a></div>
+		<div><a href="favorites.html">My Favorites</a></div>
+		<div><a href="shopping_list.html">My Shopping List</a></div>
+	</nav>
+
+	<h1>Create Your Own Recipe</h1>
+	<p style="color:red">What fields are in the form depends on what the API looks like. For ingredients and steps, maybe we can ask for the user for the # of steps/ingredients then we can loop to create matching # of text boxes???</p>
+	<form method="POST" action="">
+		Name of Dish: <input type="text" id="name" /><br/><br/>
+		Category: 
+		<select name="cuisine_type" size="1">
+			<option value="italian">Italian</option>
+			<option value="carribbean">Carribbean</option>
+			<option value="korean">Korean</option>
+			<option value="german">German</option>
+			<option value="indian">Indian</option>
+			<option value="others">Others</option>
+		</select><br/><br/>
+		Preparation Time: 
+		<select name="prep_time" size="1">
+			<option value="15">less than 15 mins</option>
+			<option value="30">less than 30 mins</option>
+			<option value="60">between 30 mins and 1 hr</option>
+			<option value="120">between 1 hr and 2 hrs</option>
+			<option value="more">more than 2 hrs</option>
+		</select><br/><br/>
+		Ingredients: <input type="text" id="ingredients" /><br/><br/>
+		Steps: <input type="text" id="steps" /><br/><br/>
+		<input type="submit" value="Add to Favorites" /><br/><br/>
+	</form>
+</body>
+</html>
