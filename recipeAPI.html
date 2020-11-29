@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+	<title>Spoonacular API Extraction</title>
+	<meta charset="utf-8"/>
+	<script>
+
+		//recipe object
+		//should I add a null _id value?
+		function Recipe(name, servings, cookTimeMinutes, dishTypes
+						instructions, ingredients, summary, winePairings)
+		{
+			//string
+			this.name = name;
+			//integer
+			this.servings = servings;
+			//integer
+			this.cookTimeMinutes = cookTimeMinutes;
+			//array of strings
+			this.dishTypes = dishTypes;
+			//formatted string
+			this.instructions = instructions;
+			//array of objects
+			this.ingredients = [];
+			for (i = 0; i < ingredients.length; i++)
+			{
+				// this.ingredients.push(new Ingredient(ingredients[i]["name"], 
+													 // ingredients[i]["original"]));
+				this.ingredients.push(ingredients[i]["original"]);
+			}
+			//string
+			this.summary = summary;
+			//array of strings
+			this.wines = winePairings["pairedWines"];
+			//string
+			this.winePairingSummary = winePairings["pairingText"];
+			//boolean
+			this.favorite = false;
+		}
+
+		// //ingredient object
+		// function Ingredient(ingredientName, ingredientNameAndQuantity)
+		// {
+		// 	//string
+		// 	this.ingredientName = ingredientName;
+		// 	//string
+		// 	this.ingredientNameAndQuantity = ingredientNameAndQuantity;
+		// }
+
+		function createRecipeObjects(recipes)
+		{
+			recipeObjects = [];
+
+			for (i = 0; i < recipes.length; i++)
+			{
+				//if pulled recipe is missing its name, instructions, or ingredients, skip it
+				if (recipes[i]["title"].length == 0 || recipes[i][instructions].length == 0 ||
+					recipes[i]["extendedIngredients"].length == 0)
+				{
+					continue;
+				}
+
+				recipeObjects.push(new Recipe(recipes[i]["title"], recipes[i]["servings"], 
+											  recipes[i]["readyInMinutes"], recipes[i]["dishTypes"],
+											  recipes[i]["instructions"], 
+											  recipes[i]["extendedIngredients"], recipes[i]["summary"], 
+											  recipes[i][winePairing]));
+			}
+
+			return recipeObjects;
+		}
+
+		function getRecipes() {
+			// Make instance of request object
+			// to make HTTP request after page is loaded
+
+			request = new XMLHttpRequest();
+ 
+			// Set the URL for the AJAX request to be the JSON file
+			request.open("GET", "https://api.spoonacular.com/recipes/random?number=20&apiKey=ce9a6fd9505f495cb7294c333366859b", true);
+
+ 
+			// set up event handler/callback
+			request.onreadystatechange = function() {
+				// wait for done + success
+				if (request.readyState == 4 && request.status == 200) {
+
+					result = request.responseText;
+					document.write(result);
+					recipes = JSON.parse(result);
+					recipeObjects = createRecipeObjects(recipes["recipes"]);
+					
+					//save recipe objects to database ???
+					
+				}
+				else if (request.readyState == 4 && request.status != 200) {
+
+					document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+
+				}
+
+				else if (request.readyState == 3) {
+
+					document.getElementById("data").innerHTML = "Too soon!  Try again";
+
+				}
+
+			}
+			//fire off the HTTP request
+			request.send();
+			console.log("4 - Request sent");
+		}
+	</script>
+</head>
+
+
+<body onload="getRecipes()">
+
+	<h1>Recipe</h1>
+	<div id="data">Loading...</div>
+	<br/>
+	<div> 
+</body>
+</html>
