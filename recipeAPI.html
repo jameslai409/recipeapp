@@ -76,7 +76,10 @@
 			request = new XMLHttpRequest();
  
 			// Set the URL for the AJAX request to be the JSON file
-			request.open("GET", "https://api.spoonacular.com/recipes/random?number=20&apiKey=ce9a6fd9505f495cb7294c333366859b", true);
+			
+			//COMMENTING THIS OUT FOR NOW because we have a limitted number of calls we can make to this API per day,
+			//so we shouldn't waste them before we know how to save them to the DB
+// 			request.open("GET", "https://api.spoonacular.com/recipes/random?number=20&apiKey=ce9a6fd9505f495cb7294c333366859b", true);
 
  
 			// set up event handler/callback
